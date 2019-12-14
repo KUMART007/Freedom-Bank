@@ -3,13 +3,120 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/reset.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Home Page</title>
 </head>
 
 <body>
-  {{{body}}}
-</body>
+  <div class='jumbo-container'>
+    <nav class='nav-bar'>
+      <p class='dropdown'><a href='#'>Personal</a></p>
+      <p class='dropdown'><a href='#'>Business</a></p>
+      <p class='dropdown'><a href='#'>Investment</a></p>
+      <p class='dropdown'><a href='#'>Careers</a></p>
+    </nav>
 
+    <div class='modal'>
+        <div class='modal-content'>
+            <span class="close">&times;</span>
+                <div class='login-box'>
+                  <form>
+                    UserName:<br>
+                    <input type="text" id='username'><br>
+                    Password:<br>
+                    <input type="password" id="pw">
+                    <div class='pw-error'></div>
+                    <div>
+                      <button class='account-button login-button'>Login</button>
+                      <button class='account-button signup-button'>Sign up!</button>
+                    </div>
+                </form>
+              </div>
+        </div>
+    </div>
+
+  <div class='jumbo-login-row'>
+      <div class="login-box">
+        <h1>Log into your Account</h1>
+        <div class="button-box">
+          <button id='login'>login</button>
+          <button id='signup'>signup</button>
+        </div>
+        <div class='login-box-info'>
+          <p><a href='#'>Forgot password?</a></p>
+        </div>
+      </div>
+  </div>
+
+</div>
+</body>
+<script>
+  //pressing the login/signup will toggle the modal for user
+  $('#login').on('click',function(){
+    event.preventDefault()
+    $('.modal').css('display','block')
+  })
+
+  //pressing on the document or the X will allow the user to close the modal
+  $('span').on('click',function(){
+    event.preventDefault()
+    $('.modal').css('display','none')
+  })
+  $(window).on('click',function(event){
+    event.preventDefault()
+    $('.modal').hide()
+  })
+//buttons on the modal
+  $('.login-button').on('click',function(){
+    event.preventDefault()
+    console.log('login pressed')
+  })
+
+  $('.signup-button').on('click',function(){
+    event.preventDefault()
+    $('.pw-error').empty()
+
+    let newUsername = $('#username').val().trim()
+    let newPassword = $('#pw').val().trim()
+    checkSignUp(newUsername,newPassword)
+  })
+
+//function to make sure the user creates a password within the requirements
+  function checkSignUp(username,pw){
+    let checkUpperCase = false;
+    let checkLowerCase = false;
+    let checkLength = false;
+
+
+    for(let i = 0; i < pw.length; i++){
+      if(pw.charAt(i) === pw.charAt(i).toUpperCase()){
+        checkUpperCase = true
+      }
+      if(pw.charAt(i) === pw.charAt(i).toLowerCase()){
+        checkLowerCase = true
+      }
+    }
+
+    if(pw.length >= 8){
+      checkLength = true
+    }
+
+    if(checkUpperCase === false){
+      $('.pw-error').append(`<p>You must include a uppercase letter!</p>`)
+    }
+    if(checkLowerCase === false){
+      $('.pw-error').append(`<p>You must include a lowercase letter!</p>`)
+    }
+    if(checkLength === false){
+      $('.pw-error').append(`<p>Your password must be 8 or more characters!</p>`)
+    }
+    if(checkUpperCase === true && checkLowerCase === true && checkLength === true){
+      console.log('password requirements passed')
+      console.log(`creating new user \nUsername: ${username}\nPassword: ${pw}`)
+    }
+  }
+
+</script>
 </html>
