@@ -10,6 +10,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE account (
+    accountnumber INT NOT NULL,
     balance DECIMAL(10,2)
 );
 
