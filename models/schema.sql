@@ -1,5 +1,11 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS freedombank_db;
+CREATE DATABASE freedombank_db;
+USE freedombank_db;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+CREATE TABLE user (
+    id INT NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
