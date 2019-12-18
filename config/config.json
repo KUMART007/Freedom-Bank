@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Burgl4rs",
     "database": "freedombank_db",
     "host": "localhost",
     "dialect": "mysql"

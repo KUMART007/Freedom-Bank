@@ -28,21 +28,19 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = (app) => {
-
-  app.get("/api/user_data/:email", (req, res)=> {
+module.exports = app => {
+  app.get("/api/user_data/:email", (req, res) => {
     db.User.findAll({
       where: {
         email: req.params.email
       }
-    }).then((result) => {
+    }).then(result => {
       res.json(result);
-    })
+    });
   });
 
-
   app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
-    res.json(`/accounts`)
+    res.json({ location: "/members" });
   });
 
   app.post(`/api/signup`, (req, res) => {
@@ -52,23 +50,31 @@ module.exports = (app) => {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password
-    }).then(() => {
-      res.redirect(307, `/api/login`);
-    }).catch((err) => {
-      console.log(err);
-      res.json(err);
     })
-  })
-
-  app.get(`/logout`, (req, res) => {
-    if (!req.user) {
-      res.json({});
-    } else {
-      res.json({
-        email: req.user.email,
-        // id: req.user.id
+      .then(user => {
+        req.login(user, function(err) {
+          if (err) res.status(400).json(err);
+          res.json({ location: "/members" });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.json(err);
       });
-    }
-  })
+  });
 
-}
+  // app.get(`/logout`, (req, res) => {
+  //   if (!req.user) {
+  //     res.json({});
+  //   } else {
+  //     res.json({
+  //       email: req.user.email
+  //       // id: req.user.id
+  //     });
+  //   }
+  // });
+  app.get(`/logout`, (req, res) => {
+    req.logout();
+    res.redirect(`/`);
+  });
+};
