@@ -77,3 +77,25 @@
   border: 1px solid #888;
   width: 80%; 
 }
+
+/*Footer styling */
+
+.footer {
+  display: flex;
+  height: 100px;
+  background-color: #302f35;
+  color: rgb(117, 115, 115);
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.logo {
+  background-image: url("../images/download_1_50x50.png");
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+
+
+
