@@ -40,6 +40,7 @@ module.exports = app => {
   });
 
   app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
+    console.log('logging')
     res.json({ location: "/members" });
   });
 
