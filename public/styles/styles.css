@@ -57,6 +57,7 @@
   flex-direction: column;
 }
 
+
 /* -------------------MODAL ------------------ */
 .modal{
   display: none; 
@@ -75,7 +76,8 @@
   margin: 15% auto; 
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; 
+
+  
 }
 
 /*----Credit card container----*/
@@ -196,3 +198,21 @@ a {
 hr {
   margin: 10px;
 }
+
+  width: 50%; 
+}
+.modal-login-box{
+  text-align: center;
+}
+.close{
+  font-size:50px;
+}
+.close:hover{
+  cursor:pointer;
+}
+#pw,#username{
+  font-size:25px;
+  height:50px;
+  width:250px;
+}
+
