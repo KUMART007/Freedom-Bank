@@ -12,6 +12,17 @@
 </head>
 
 <body>
+  <div class="header-section">
+    <div id="main-title-container">
+      <img class="eagle"
+        src="http://www.simpleimageresizer.com/_uploads/photos/d2ecd3ca/19-195754_bald-eagle-outline-photo-white-eagle-logo-png_1_50x50.jpg"
+        alt="burger" />
+      <h1 class="eagle">Freedom Bank</h1>
+    </div>
+  </div>
+
+
+
   <div class='jumbo-container'>
     <nav class='nav-bar'>
       <p class='dropdown'><a href='#'>Personal</a></p>
@@ -20,26 +31,27 @@
       <p class='dropdown'><a href='#'>Careers</a></p>
     </nav>
 
+
     <div class='modal'>
-        <div class='modal-content'>
-            <span class="close">&times;</span>
-                <div class='modal-login-box'>
-                  <form>
-                    UserName:<br>
-                    <input type="text" id='username'><br>
-                    Password:<br>
-                    <input type="password" id="pw">
-                    <div class='pw-error'></div>
-                    <div>
-                      <button class='account-button login-button'>Login</button>
-                      <button class='account-button signup-button'>Sign up!</button>
-                    </div>
-                </form>
-              </div>
+      <div class='modal-content'>
+        <span class="close">&times;</span>
+        <div class='modal-login-box'>
+          <form>
+            UserName:<br>
+            <input type="text" id='username'><br>
+            Password:<br>
+            <input type="password" id="pw">
+            <div class='pw-error'></div>
+            <div>
+              <button class='account-button login-button'>Login</button>
+              <button class='account-button signup-button'>Sign up!</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
 
-  <div class='jumbo-login-row'>
+    <div class='jumbo-login-row'>
       <div class="login-box">
         <h1>Log into your Account</h1>
         <div class="button-box">
@@ -50,90 +62,91 @@
           <p><a href='#'>Forgot password?</a></p>
         </div>
       </div>
-  </div>
+    </div>
 
-</div>
+
 </body>
 <script>
   //pressing the login/signup will toggle the modal for user
-  $('#login').on('click',function(){
+  $('#login').on('click', function () {
     event.preventDefault()
-    $('.modal').css('display','block')
+    $('.modal').css('display', 'block')
   })
 
   //pressing on the document or the X will allow the user to close the modal
-  $('span').on('click',function(){
+  $('span').on('click', function () {
     event.preventDefault()
-    $('.modal').css('display','none')
+    $('.modal').css('display', 'none')
   })
 
-//buttons on the modal
-  $('.login-button').on('click',function(){
+  //buttons on the modal
+  $('.login-button').on('click', function () {
     event.preventDefault()
-    
+
     let email = $('#username').val().trim()
     let password = $('#pw').val().trim()
     console.log(`Loging in as\nLogin:${email}\nPassword:${password}`)
-    loginUser(email,password)
+    loginUser(email, password)
 
   })
 
-  $('.signup-button').on('click',function(){
+  $('.signup-button').on('click', function () {
     event.preventDefault()
     $('.pw-error').empty()
 
     let newUsername = $('#username').val().trim()
     let newPassword = $('#pw').val().trim()
-    checkSignUp(newUsername,newPassword)
+    checkSignUp(newUsername, newPassword)
   })
 
-//function to make sure the user creates a password within the requirements
-  function checkSignUp(username,pw){
+  //function to make sure the user creates a password within the requirements
+  function checkSignUp(username, pw) {
     let checkUpperCase = false;
     let checkLowerCase = false;
     let checkLength = false;
 
 
-    for(let i = 0; i < pw.length; i++){
-      if(pw.charAt(i) === pw.charAt(i).toUpperCase()){
+    for (let i = 0; i < pw.length; i++) {
+      if (pw.charAt(i) === pw.charAt(i).toUpperCase()) {
         checkUpperCase = true
       }
-      if(pw.charAt(i) === pw.charAt(i).toLowerCase()){
+      if (pw.charAt(i) === pw.charAt(i).toLowerCase()) {
         checkLowerCase = true
       }
     }
 
-    if(pw.length >= 8){
+    if (pw.length >= 8) {
       checkLength = true
     }
 
-    if(checkUpperCase === false){
+    if (checkUpperCase === false) {
       $('.pw-error').append(`<p>You must include a uppercase letter!</p>`)
     }
-    if(checkLowerCase === false){
+    if (checkLowerCase === false) {
       $('.pw-error').append(`<p>You must include a lowercase letter!</p>`)
     }
-    if(checkLength === false){
+    if (checkLength === false) {
       $('.pw-error').append(`<p>Your password must be 8 or more characters!</p>`)
     }
-    if(checkUpperCase === true && checkLowerCase === true && checkLength === true){
+    if (checkUpperCase === true && checkLowerCase === true && checkLength === true) {
       console.log('password requirements passed')
       console.log(`creating new user \nUsername: ${username}\nPassword: ${pw}`)
     }
   }
-    function loginUser(email, password) {
+  function loginUser(email, password) {
     $.post("/api/login", {
       email: email,
       password: password
-    }).then(function(data) {
+    }).then(function (data) {
       console.log('logging in....')
       console.log(data)
       window.location.replace(data.location);
       // If there's an error, log the error
-    }).catch(function(err) {
+    }).catch(function (err) {
       console.log(`The error is ${err}`);
     });
   }
 
 </script>
+
 </html>
