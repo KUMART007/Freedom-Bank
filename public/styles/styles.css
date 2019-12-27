@@ -15,6 +15,7 @@
 #main-title-container {
   margin: auto;
 }
+
 .nav-bar {
   display: flex;
   background-color: black;
@@ -26,10 +27,12 @@
   margin-right: auto;
   justify-content: flex-start;
 }
+
 .dropdown a {
   text-decoration: none;
   color: white;
 }
+
 .dropdown {
   font-size: 20px;
   padding: 20px 15px 20px 15px;
@@ -40,11 +43,11 @@
   background-color: orange;
 }
 
-#login,
-#signup {
+#login, #signup {
   height: 50px;
   display: flex;
 }
+
 .button-box {
   display: flex;
 }
@@ -70,6 +73,7 @@
   margin-right: auto;
   width: 960px;
 }
+
 .login-box {
   width: 250px;
   height: 180px;
@@ -83,7 +87,8 @@
 }
 
 /* -------------------MODAL ------------------ */
-.modal {
+
+.modal, .modal2 {
   display: none;
   position: fixed;
   z-index: 1;
@@ -95,24 +100,25 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
- 
 }
 
 /*----Credit card container----*/
+
 .container2 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   width: 100%;
   height: 700px;
-  background-color:rgb(248, 247, 252)
+  background-color: rgb(248, 247, 252)
 }
 
 #list-of-options {
@@ -165,7 +171,6 @@
   color: white;
 }
 
-
 a {
   text-decoration: none;
 }
@@ -173,7 +178,6 @@ a {
 .card-info {
   color: rgb(8, 8, 139);
 }
-
 
 /*Footer styling */
 
@@ -222,30 +226,30 @@ a {
 hr {
   margin: 10px;
 }
+/* 
+width: 50%;
+} */
 
-  width: 50%; 
-
-}
 .modal-login-box {
   text-align: center;
 }
+
 .close {
   font-size: 50px;
 }
+
 .close:hover {
   cursor: pointer;
 }
-#pw,
-#username {
+
+#pw, #username, #email, #loginusername, #loginpw {
   font-size: 25px;
   height: 50px;
   width: 250px;
 }
 
-#pw,#username{
-  font-size:25px;
-  height:50px;
-  width:250px;
+#pw, #username, #email, #loginusername, #loginpw {
+  font-size: 25px;
+  height: 50px;
+  width: 250px;
 }
-
-

@@ -1,14 +1,18 @@
+var path = require("path");
 var db = require("../models");
-
-module.exports = function(app) {
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     res.render("layouts/main");
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
+  });
+  app.get("/members", isAuthenticated, function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 };
 

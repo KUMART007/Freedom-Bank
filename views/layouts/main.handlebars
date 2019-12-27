@@ -1,131 +1,169 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="/styles/reset.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="reset.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Home Page</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles/reset.css" media="screen" title="no
+      title" charset="utf-8">
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no
+      title" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Home Page</title>
+  </head>
 
-<body>
-  <div class="header-section">
-    <div id="main-title-container">
-      <img class="eagle"
-        src="http://www.simpleimageresizer.com/_uploads/photos/d2ecd3ca/19-195754_bald-eagle-outline-photo-white-eagle-logo-png_1_50x50.jpg"
-        alt="burger" />
-      <h1 class="eagle">Freedom Bank</h1>
-    </div>
-  </div>
-
-
-
-  <div class='jumbo-container'>
-    <nav class='nav-bar'>
-      <p class='dropdown'><a href='#'>Personal</a></p>
-      <p class='dropdown'><a href='#'>Business</a></p>
-      <p class='dropdown'><a href='#'>Investment</a></p>
-      <p class='dropdown'><a href='#'>Careers</a></p>
-    </nav>
-
-
-    <div class='modal'>
-      <div class='modal-content'>
-        <span class="close">&times;</span>
-        <div class='modal-login-box'>
-          <form>
-            UserName:<br>
-            <input type="text" id='username'><br>
-            Password:<br>
-            <input type="password" id="pw">
-            <div class='pw-error'></div>
-            <div>
-              <button class='account-button login-button'>Login</button>
-              <button class='account-button signup-button'>Sign up!</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class='jumbo-login-row'>
-      <div class="login-box">
-        <h1>Log into your Account</h1>
-        <div class="button-box">
-          <button id='login'>login</button>
-          <button id='signup'>signup</button>
-        </div>
-        <div class='login-box-info'>
-          <p><a href='#'>Forgot password?</a></p>
-        </div>
+  <body>
+    <div class="header-section">
+      <div id="main-title-container">
+        <img class="eagle"
+          src="https://res.cloudinary.com/teepublic/image/private/s--sxeg9DmY--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1547549360/production/designs/3987359_0.jpg"
+          alt="bankLogo" style="width: 50px;"/>
+        <h1 class="eagle">Freedom Bank</h1>
       </div>
     </div>
 
 
 
-</div>
-<div class="container2">
-<div id="list-of-options">
-  <ul class="ul-boxs">
-    <li class="box1 display-li"><p class="list"><a class="white-text" href="Find a credit card">Find a credit card</a></p>
-    </li>
-    <li class="box2 display-li"><p class="list2"><a class="list2" href="Manage your money">Manage your money</a></p>
-    </li>
-    <li class="box2 display-li"><p class="list2"><a class="list2" href="Buy a home">Buy a home</a></p>
-    </li>
-    <li class="box2 display-li"><p class="list2"><a class="list2" href="Buy a car">Buy a car</a></p>
-    </li>
-    <li class="box2 display-li"><p class="list2"><a class="list2" href="Use your equity">Use your equity</a></p>
-    </li>
-  </ul>
-</div>
-<div class="card-info">
-  <p>A card that matches you</p>
-  </div>
-</div>
+    <div class='jumbo-container'>
+      <nav class='nav-bar'>
+        <p class='dropdown'><a href='#'>Personal</a></p>
+        <p class='dropdown'><a href='#'>Business</a></p>
+        <p class='dropdown'><a href='#'>Investment</a></p>
+        <p class='dropdown'><a href='#'>Careers</a></p>
+      </nav>
 
-</body>
+      {{!-- Login Modal --}}
+      <div class='modal'>
+        <div class='modal-content'>
+          <span class="close">&times;</span>
+          <div class='modal-login-box'>
+            <form>
+              UserName:<br>
+              <input type="text" id='loginusername'><br>
+              Password:<br>
+              <input type="password" id="loginpw">
+              <div class='pw-error'></div>
+              <div>
+                <button class='account-button login-button'>Login</button>
+                <button class='account-button signup-button'>Sign up!</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
-<footer class="footer">
-  <div id="logo">
-    <p class="white">
-      <a class="white-text" href="Financial IQ">Financial IQ</a>|
-      <a class="white-text" href="Security">Security</a>|
-      <a class="white-text" href="Careers">Careers</a>|
-      <a class="white-text" href="FAQ">FAQ</a>|
-      <a class="white-text" href="Privacy">Privacy</a>|
-      <a class="white-text" href="Online Tracking and Advertising">Online Tracking and Advertising</a>|
-      <a class="white-text" href="Accessibility">Accessibility</a>
-    </p>
-    <br>
+
+      {{!-- Signup Modal --}}
+      <div class='modal2'>
+        <div class='modal-content'>
+          <span class="close">&times;</span>
+          <div class='modal-login-box'>
+            <form>
+              Enter the Username:<br>
+              <input type="text" id='username'><br>
+              Enter the Email Address<br>
+              <input type="email" id='email'><br>
+              Password:<br>
+              <input type="password" id="pw">
+              <div class='pw-error'></div>
+              <div>
+                <button class='account-button signup-button'>Sign up!</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class='jumbo-login-row'>
+        <div class="login-box">
+          <h1>Log into your Account</h1>
+          <div class="button-box">
+            <button id='login'>login</button>
+            <button id='signup'>signup</button>
+          </div>
+          <div class='login-box-info'>
+            <p><a href='#'>Forgot password?</a></p>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="container2">
+      <div id="list-of-options">
+        <ul class="ul-boxs">
+          <li class="box1 display-li"><p class="list"><a class="white-text"
+                href="Find a credit card">Find a credit card</a></p>
+          </li>
+          <li class="box2 display-li"><p class="list2"><a class="list2"
+                href="Manage your money">Manage your money</a></p>
+          </li>
+          <li class="box2 display-li"><p class="list2"><a class="list2"
+                href="Buy a home">Buy a home</a></p>
+          </li>
+          <li class="box2 display-li"><p class="list2"><a class="list2"
+                href="Buy a car">Buy a car</a></p>
+          </li>
+          <li class="box2 display-li"><p class="list2"><a class="list2"
+                href="Use your equity">Use your equity</a></p>
+          </li>
+        </ul>
+      </div>
+      <div class="card-info">
+        <p>A card that matches you</p>
+      </div>
+    </div>
+
+  </body>
+
+  <footer class="footer">
+    <div id="logo">
+      <p class="white">
+        <a class="white-text" href="Financial IQ">Financial IQ</a>|
+        <a class="white-text" href="Security">Security</a>|
+        <a class="white-text" href="Careers">Careers</a>|
+        <a class="white-text" href="FAQ">FAQ</a>|
+        <a class="white-text" href="Privacy">Privacy</a>|
+        <a class="white-text" href="Online Tracking and Advertising">Online
+          Tracking and Advertising</a>|
+        <a class="white-text" href="Accessibility">Accessibility</a>
+      </p>
+      <br>
       <a href=""><img class="img1" /></a>
       <a href=""><img class="img2" /></a>
       <a href=""><img class="img3" /></a>
       <hr>
     </div>
   </footer>
-<script>
-  //pressing the login/signup will toggle the modal for user
+  <script>
+  //pressing the login will toggle the modal for user
   $('#login').on('click', function () {
     event.preventDefault()
     $('.modal').css('display', 'block')
   })
 
+  //pressing the signup will toggle the modal for user
+  $('#signup').on('click', function ()
+  {
+    event.preventDefault()
+    $('.modal2').css('display', 'block')
+  })
+
   //pressing on the document or the X will allow the user to close the modal
   $('span').on('click', function () {
     event.preventDefault()
-    $('.modal').css('display', 'none')
+    $('.modal, .modal2').css('display', 'none')
   })
 
   //buttons on the modal
   $('.login-button').on('click', function () {
     event.preventDefault()
 
-    let email = $('#username').val().trim()
-    let password = $('#pw').val().trim()
+    let email = $('#loginusername').val().trim()
+    let password = $('#loginpw').val().trim()
     console.log(`Loging in as\nLogin:${email}\nPassword:${password}`)
     loginUser(email, password)
 
@@ -136,12 +174,14 @@
     $('.pw-error').empty()
 
     let newUsername = $('#username').val().trim()
+    let newEmailAddress = $('#email').val().trim();
     let newPassword = $('#pw').val().trim()
-    checkSignUp(newUsername, newPassword)
+    {{!-- checkSignUp(newUsername, newEmailAddress,newPassword) --}}
+    signUpUser(newUsername, newEmailAddress, newPassword);
   })
 
   //function to make sure the user creates a password within the requirements
-  function checkSignUp(username, pw) {
+  function checkSignUp(username, email, pw) {
     let checkUpperCase = false;
     let checkLowerCase = false;
     let checkLength = false;
@@ -173,6 +213,7 @@
       console.log('password requirements passed')
       console.log(`creating new user \nUsername: ${username}\nPassword: ${pw}`)
     }
+  signUpUser(username, email, password)
   }
   function loginUser(email, password) {
     $.post("/api/login", {
@@ -188,6 +229,18 @@
     });
   }
 
-</script>
+  function signUpUser(username, email, password)
+  {
+    $.post("/api/signup", {
+      username: username,
+      email: email,
+      password: password
+    }).then(function (data)
+    {
+      window.location.replace(data.location);
+      // If there's an error, handle it by throwing up a boostrap alert
+    }).catch(handleLoginErr);
+  }
 
+</script>
 </html>
