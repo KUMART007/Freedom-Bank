@@ -60,6 +60,7 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+var path = require("path");
 // Middleware
 app.use(
   bodyParser.urlencoded({
@@ -86,6 +87,7 @@ app.engine(
     defaultLayout: "main"
   })
 );
+// app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "handlebars");
 
 // Routes

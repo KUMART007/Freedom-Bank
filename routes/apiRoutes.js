@@ -41,21 +41,25 @@ module.exports = app => {
 
   app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
     console.log('logging')
-    res.json({ location: "/members" });
+    res.json({
+      location: "/members"
+    });
   });
 
   app.post(`/api/signup`, (req, res) => {
     console.log(req.body);
 
     db.User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    })
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+      })
       .then(user => {
-        req.login(user, function(err) {
+        req.login(user, function (err) {
           if (err) res.status(400).json(err);
-          res.json({ location: "/members" });
+          res.json({
+            location: "/members"
+          });
         });
       })
       .catch(err => {

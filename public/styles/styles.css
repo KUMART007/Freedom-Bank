@@ -226,9 +226,10 @@ a {
 hr {
   margin: 10px;
 }
-/* 
-width: 50%;
-} */
+
+  {
+  width: 50%;
+}
 
 .modal-login-box {
   text-align: center;
