@@ -171,7 +171,7 @@
   $('.login-button').on('click', function () {
     event.preventDefault()
 
-    let email = $('#loginusername').val().trim()
+    var email = $('#loginusername').val().trim()
     let password = $('#loginpw').val().trim()
     console.log(`Loging in as\nLogin:${email}\nPassword:${password}`)
     loginUser(email, password)
@@ -250,6 +250,6 @@
       // If there's an error, handle it by throwing up a boostrap alert
     }).catch(handleLoginErr);
   }
-
+module.exports= email;
 </script>
 </html>

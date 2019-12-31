@@ -33,11 +33,23 @@ module.exports = app => {
     db.User.findAll({
       where: {
         email: req.params.email
+        // id:req.params.id
       }
-    }).then(result => {
+    }).then((result) => {
       res.json(result);
     });
   });
+
+  // app.get("/api/user_data/:username", (req, res) => {
+  //   db.User.findOne({
+  //     where: {
+  //       username: req.params.username
+  //     }
+  //   }).then((result) => {
+  //     console.log(`Username at API is : ${result}`);
+  //     res.json(result);
+  //   });
+  // });
 
   app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
     console.log('logging')
