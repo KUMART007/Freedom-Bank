@@ -27,18 +27,31 @@
 
 var db = require("../models");
 var passport = require("../config/passport");
-
+var initBal = 1250.00;
 module.exports = app => {
-  app.get("/api/user_data/:email", (req, res) => {
+  app.get("/api/user/me", (req, res) => {
     db.User.findAll({
       where: {
-        email: req.params.email
+        id: req.user.id
         // id:req.params.id
-      }
+      },
+      attributes:{exclude:["password"]}
     }).then((result) => {
+      console.log(`Result for member is ${result}`);
       res.json(result);
     });
   });
+    app.get("/api/account", (req, res) => {
+      db.Account.findAll({
+        where: {
+          id: req.user.id
+          // id:req.params.id
+        },
+      }).then((result) => {
+        console.log(`Result for member is ${result}`);
+        res.json(result);
+      });
+    });
 
   // app.get("/api/user_data/:username", (req, res) => {
   //   db.User.findOne({
@@ -72,6 +85,12 @@ module.exports = app => {
           res.json({
             location: "/members"
           });
+          db.Account.create({
+            userid: req.user.id,
+            current_balance: initBal
+          }).then((acc) => {
+            
+          })
         });
       })
       .catch(err => {

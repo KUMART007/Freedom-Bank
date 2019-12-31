@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Account Page</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
-</head>
+  <head>
+    <title>Account Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
 
-<body>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-    </div>
-  </div>
-</nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles/reset.css" media="screen" title="no
+      title" charset="utf-8">
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no
+      title" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div class="header-section">
+      <div id="main-title-container">
+        <img class="eagle"
+          src="https://res.cloudinary.com/teepublic/image/private/s--sxeg9DmY--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1547549360/production/designs/3987359_0.jpg"
+          alt="bankLogo" style="width: 50px;" />
+        <h1 class="eagle">Freedom Bank</h1>
       </div>
     </div>
-  </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid text-right">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
+        <a href="/logout">
+          Logout
+        </a>
 
-</body>
+        <h2 class="text-right">Welcome <span class="member-name"></span></h2>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="card">
+        <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <div class="card-body">
+          <h1>Current balance is: <span id="current-balance"></span></h1>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="js/members.js"></script>
+
+  </body>
 
 </html>
