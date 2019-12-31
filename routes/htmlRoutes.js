@@ -60,7 +60,7 @@ module.exports = function (app) {
   });
   app.get(`/career`, function (req, res) {
     console.log(`requested page is ${ req.url }`);
-    // res.sendFile(path.join(__dirname, "../public/career.html"));
-    res.render("career");
+    res.sendFile(path.join(__dirname, "../public/career.html"));
+    // res.render("career");
   });
 };

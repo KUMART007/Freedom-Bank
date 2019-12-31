@@ -1,6 +1,6 @@
 .header-section {
   display: flex;
-  background-color: red;
+  background-color: rgb(25, 153, 232);
   width: 100%;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 70px;
@@ -184,7 +184,7 @@ a {
 .footer {
   display: flex;
   height: 200px;
-  background-color: #fc1a1a;
+  /* background-color: #1af8fc; */
   color: rgb(117, 115, 115);
   align-items: center;
   padding: 0px 10px 0px 10px;

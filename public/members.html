@@ -5,9 +5,7 @@
     <title>Account Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link href="stylesheets/style.css" rel="stylesheet">
+
 
     <meta charset="utf-8">
     <link rel="stylesheet" href="/styles/reset.css" media="screen" title="no
@@ -16,9 +14,21 @@
       title" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+
+    <!-- w3 css -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- moment js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js">
+    </script>
   </head>
 
-  <body>
+  <body class="w3-light-blue">
     <div class="header-section">
       <div id="main-title-container">
         <img class="eagle"
@@ -31,20 +41,73 @@
       <div class="container-fluid text-right">
 
         <a href="/logout">
-          Logout
+          <h1>Logout</h1>
         </a>
 
         <h2 class="text-right">Welcome <span class="member-name"></span></h2>
       </div>
     </nav>
     <div class="container">
-      <div class="card">
+      <div class="card bg-danger">
         <img class="card-img-top" src="holder.js/100x180/" alt="">
         <div class="card-body">
           <h1>Current balance is: <span id="current-balance"></span></h1>
         </div>
       </div>
+      <hr>
+      <h3 class="text-center">Recent Transactions</h3>
+      <table class="table">
+        <thead>
+          <tr class="font-weight-bolder">
+            <th>Date</th>
+            <th>Activity Type</th>
+            <th>Comment</th>
+            <th>Amount</th>
+            <th>Updated Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row"><span class="date"></span></td>
+            <td>Debit</td>
+            <td>Check no 4525</td>
+            <td>50.00</td>
+            <td>1250.00</td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+
     </div>
+    <!-- footer -->
+    <footer class="footer text-dark fixed-bottom">
+      <div id="logo">
+        <p class="white">
+          <a class="mr-1 " href="Financial IQ">Financial IQ</a>|
+          <a class="mr-1 " href="Security">Security</a>|
+          <a class="mr-1 " href="/career">Careers</a>|
+          <a class="mr-1 " href="FAQ">FAQ</a>|
+          <a class="mr-1 " href="Privacy">Privacy</a>|
+          <a class="mr-1 " href="Online Tracking and Advertising">Online
+            Tracking and Advertising</a>|
+          <a class=" " href="Accessibility">Accessibility</a>
+        </p>
+        <br>
+        <div class="text-center">
+          <a href=""><img class="img1" /></a>
+          <a href=""><img class="img2" /></a>
+          <a href=""><img class="img3" /></a>
+        </div>
+        <hr>
+      </div>
+    </footer>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
