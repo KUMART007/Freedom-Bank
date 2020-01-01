@@ -148,6 +148,7 @@
     </div>
   </footer>
   <script>
+    {{!-- var isUserExist; --}}
   //pressing the login will toggle the modal for user
   $('#login').on('click', function () {
     event.preventDefault()
@@ -181,13 +182,16 @@
   $('.signup-button').on('click', function () {
     event.preventDefault()
     $('.pw-error').empty()
-
+    justTest();
     let newUsername = $('#username').val().trim()
     let newEmailAddress = $('#email').val().trim();
     let newPassword = $('#pw').val().trim()
     {{!-- checkSignUp(newUsername, newEmailAddress,newPassword) --}}
-    signUpUser(newUsername, newEmailAddress, newPassword);
-  })
+   
+   {{!-- userExistance(newUsername,newEmailAddress, newPassword); --}}
+   console.log("is user "+ userExistance(newUsername, newEmailAddress, newPassword));
+   
+  });
 
   //function to make sure the user creates a password within the requirements
   function checkSignUp(username, email, pw) {
@@ -222,7 +226,10 @@
       console.log('password requirements passed')
       console.log(`creating new user \nUsername: ${username}\nPassword: ${pw}`)
     }
-  signUpUser(username, email, password)
+  
+      signUpUser(username, email, password);
+    
+  
   }
   function loginUser(email, password) {
     $.post("/api/login", {
@@ -237,7 +244,28 @@
       console.log(`The error is ${err}`);
     });
   }
-
+  // Check if user exists
+  function userExistance(user, userEmail, userPassword)
+  {
+    var isUserExist;
+    $.ajax({
+      type: "GET",
+      url: "/api/usercheck/" + userEmail,
+    }).then((res) =>
+    {
+      {{!-- console.log(`The response is ${JSON.stringify(res, null, 2)}`);
+      console.log(`Email is ${res[0].email}`) --}}
+      isUserExist= true;
+      console.log(`user exists says ${ isUserExist }`)
+      return isUserExist;
+      {{!-- console.log(`user exists says ${ isUserExist }`);
+      if(isUserExist){
+        alert("Email is already registered")
+      }else{
+        signUpUser(user, userEmail, userPassword);
+      } --}}
+    });
+  }
   function signUpUser(username, email, password)
   {
     $.post("/api/signup", {
@@ -249,6 +277,13 @@
       window.location.replace(data.location);
       // If there's an error, handle it by throwing up a boostrap alert
     }).catch(handleLoginErr);
+  }
+
+  function justTest(){
+    var un= "spate";
+    var email= "sagarpatel16@gmail.com";
+    var pw= "pw";
+    userExistance(un, email, pw);
   }
 </script>
 </html>

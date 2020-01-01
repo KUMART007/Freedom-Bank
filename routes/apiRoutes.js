@@ -64,6 +64,17 @@ module.exports = app => {
   //   });
   // });
 
+  app.get(`/api/usercheck/:email`, (req, res) => {
+    db.User.findAll({
+      where: {
+        email: req.params.email
+      }
+    }).then((result) => {
+      console.log(`Returning ${result}`);
+      res.json(result);
+    })
+  })
+
   app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
     console.log('logging')
     res.json({

@@ -184,7 +184,7 @@ a {
 .footer {
   display: flex;
   height: 200px;
-  /* background-color: #1af8fc; */
+  background-color: #6a6d6d;
   color: rgb(117, 115, 115);
   align-items: center;
   padding: 0px 10px 0px 10px;

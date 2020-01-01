@@ -23,6 +23,6 @@ $(document).ready(function () {
     console.log(`Balance is ${ data }`);
     $(`#current-balance`).text(res[0].current_balance);
   });
-
+  
   $(`.date`).text(moment().format('L'));
 });
