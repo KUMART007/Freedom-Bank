@@ -15,7 +15,7 @@ require('./config/passport.js')(passport, db.user)
 // Middleware
 
 app.use(session({
-  secret: 'secret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {

@@ -17,13 +17,11 @@ module.exports = app => {
     //creates a account
     app.post('/api/createAccount',function(req,res){
       let create =  createUniqueAccountNumber(req.body,req.user)
-      setInterval(function(){
-        console.log(create)
+      setTimeout(function(){
          if(create === true){
-           clearInterval()
            res.redirect('/dashboard')
          }
-      }, 10);
+      }, 200);
     })
     //sends money to another account
     app.post('/api/sendmoney',function(req,res){
@@ -109,10 +107,12 @@ module.exports = app => {
         if(!data){
           try{
             db.Account.create(body).then(function(db){
+              console.log('account created')
             })
           } catch {
+            console.log('account creatation failed')
           }
-        } else {
+        } else if(data){
           createUniqueAccountNumber(body,id)
         }
       })
