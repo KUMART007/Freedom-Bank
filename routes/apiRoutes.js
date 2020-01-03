@@ -16,19 +16,14 @@ module.exports = app => {
     }))
     //creates a account
     app.post('/api/createAccount',function(req,res){
-        req.body.account_number = 55555
-        req.body.userId = req.user
-        req.body.current_balance = parseFloat(req.body.current_balance)
-        // createUniqueAccountNumber(req.body)
-        try{
-          console.log(req.body.account_number)
-          db.Account.create(req.body).then(function(db){
-            console.log('created')
-            res.redirect('/dashboard')
-          })
-        } catch {
-          res.redirect('/')
-        }
+      let create =  createUniqueAccountNumber(req.body,req.user)
+      setInterval(function(){
+        console.log(create)
+         if(create === true){
+           clearInterval()
+           res.redirect('/dashboard')
+         }
+      }, 10);
     })
     //sends money to another account
     app.post('/api/sendmoney',function(req,res){
@@ -96,30 +91,31 @@ module.exports = app => {
   //   }
   // });
     //creates a unique number and checks to see if that account number is unique
-    function createUniqueAccountNumber(body){
-      console.log(body)
+    function createUniqueAccountNumber(body,id){
       let testNum = ''
 
       for(let i = 0; i < 8; i++){
         let randomNum = Math.floor(Math.random() * 9)
         testNum = testNum + randomNum.toString()
       }
-
       testNum = parseInt(testNum)
-
+      body.account_number = testNum
+      body.userId = id
       db.Account.findOne({
         where: {
           account_number: testNum
         }
       }).then(data =>{
-        console.log('=----')
-        console.log(data)
         if(!data){
-          console.log('found no user')
-          return testNum
+          try{
+            db.Account.create(body).then(function(db){
+            })
+          } catch {
+          }
         } else {
-          uniqueAccountNumber()
+          createUniqueAccountNumber(body,id)
         }
       })
+      return true
     }
 };
