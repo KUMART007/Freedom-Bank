@@ -20,17 +20,17 @@ if (config.use_env_variable) {
 }
 
 fs.readdirSync(__dirname)
-  .filter(function(file) {
+  .filter(function (file) {
     return (
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     );
   })
-  .forEach(function(file) {
+  .forEach(function (file) {
     var model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 
-Object.keys(db).forEach(function(modelName) {
+Object.keys(db).forEach(function (modelName) {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
@@ -39,5 +39,13 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.users = require("./user")(sequelize, Sequelize);
+db.account = require("./account")(sequelize, Sequelize);
+db.transactions = require("./transactions")(sequelize, Sequelize);
+
+db.transactions.belongsTo(db.account);
+db.account.hasMany(db.transactions);
+db.account.belongsTo(db.users);
+db.users.hasOne(db.account);
 
 module.exports = db;

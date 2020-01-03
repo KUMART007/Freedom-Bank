@@ -56,7 +56,7 @@
               <div class='pw-error'></div>
               <div>
                 <button class='account-button login-button'>Login</button>
-                <button class='account-button signup-button'>Sign up!</button>
+                <button class='account-button signup-button1'>Sign up!</button>
               </div>
             </form>
           </div>
@@ -78,6 +78,7 @@
               <input type="password" id="pw">
               <div class='pw-error'></div>
               <div>
+                <button class='account-button login-button'>Login</button>
                 <button class='account-button signup-button'>Sign up!</button>
               </div>
             </form>
@@ -141,14 +142,21 @@
         <a class="white-text" href="Accessibility">Accessibility</a>
       </p>
       <br>
-      <a href=""><img class="img1" /></a>
-      <a href=""><img class="img2" /></a>
-      <a href=""><img class="img3" /></a>
+      <a href="https://www.facebook.com/" target="_blank"><img class="img1 fb"
+          /></a>
+      <a href="https://www.instagram.com/" target="_blank"><img
+          class="img2 insta" /></a>
+      <a href="https://twitter.com/?lang=en" target="_blank"><img
+          class="img3 tweet" /></a>
       <hr>
     </div>
   </footer>
   <script>
-    {{!-- var isUserExist; --}}
+    $(document).ready(function ()
+      {
+      var isUserExist= false;
+      
+   
   //pressing the login will toggle the modal for user
   $('#login').on('click', function () {
     event.preventDefault()
@@ -175,22 +183,22 @@
     var email = $('#loginusername').val().trim()
     let password = $('#loginpw').val().trim()
     console.log(`Loging in as\nLogin:${email}\nPassword:${password}`)
-    loginUser(email, password)
-
+    loginUser(email, password);
   })
 
   $('.signup-button').on('click', function () {
     event.preventDefault()
     $('.pw-error').empty()
-    justTest();
+    {{!-- justTest(); --}}
     let newUsername = $('#username').val().trim()
     let newEmailAddress = $('#email').val().trim();
     let newPassword = $('#pw').val().trim()
     {{!-- checkSignUp(newUsername, newEmailAddress,newPassword) --}}
    
-   {{!-- userExistance(newUsername,newEmailAddress, newPassword); --}}
-   console.log("is user "+ userExistance(newUsername, newEmailAddress, newPassword));
-   
+   userExistance(newUsername,newEmailAddress, newPassword);
+   {{!-- console.log("is user "+ userExistance(newUsername, newEmailAddress, newPassword)); --}}
+   {{!-- signUpUser(newUsername, newEmailAddress, newPassword); --}}
+
   });
 
   //function to make sure the user creates a password within the requirements
@@ -231,6 +239,26 @@
     
   
   }
+  function userNonExistance(signInEmail, signInPassword){
+     $.ajax({
+      type: "GET",
+      url: "/api/emailcheck/" + signInEmail,
+    }).then((res) =>{
+      var userEmail = res;
+      console.log(`user email length is : ${userEmail}`)
+      if(userEmail.length===0){
+        alert("No account found with this email! Try to sign up");
+         $('.signup-button1').on('click', function ()
+        {
+          event.preventDefault();
+          $('.modal').css('display', 'none');
+          $('.modal2').css('display', 'block');
+        });
+      }else{
+        loginUser(signInEmail, signInPassword);
+      }
+    })
+  }
   function loginUser(email, password) {
     $.post("/api/login", {
       email: email,
@@ -247,23 +275,25 @@
   // Check if user exists
   function userExistance(user, userEmail, userPassword)
   {
-    var isUserExist;
     $.ajax({
       type: "GET",
       url: "/api/usercheck/" + userEmail,
     }).then((res) =>
     {
-      {{!-- console.log(`The response is ${JSON.stringify(res, null, 2)}`);
-      console.log(`Email is ${res[0].email}`) --}}
-      isUserExist= true;
-      console.log(`user exists says ${ isUserExist }`)
-      return isUserExist;
-      {{!-- console.log(`user exists says ${ isUserExist }`);
-      if(isUserExist){
-        alert("Email is already registered")
-      }else{
+      console.log(`The response is ${JSON.stringify(res, null, 2)}`);
+      var userData = res;
+      console.log(`Email is ${userData}`)
+      {{!-- var emailRegistered = res[0].email; --}}
+      if(userData.length===0){
         signUpUser(user, userEmail, userPassword);
-      } --}}
+      }else{        
+        alert("Email is already registered! Try sign in instead")
+        $('.login-button').on('click', function ()
+        {
+          loginUser(userEmail, userPassword)
+        });
+        isUserExist = false;
+      }
     });
   }
   function signUpUser(username, email, password)
@@ -278,7 +308,7 @@
       // If there's an error, handle it by throwing up a boostrap alert
     }).catch(handleLoginErr);
   }
-
+      })
   function justTest(){
     var un= "spate";
     var email= "sagarpatel16@gmail.com";

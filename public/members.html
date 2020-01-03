@@ -47,7 +47,18 @@
         <h2 class="text-right">Welcome <span class="member-name"></span></h2>
       </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid text-center">
+      <div id="activity-block" class="mb-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#transfer">
+          Transfer
+        </button>
+        <button type="button" id="deposit"
+          class="btn btn-primary">Deposit</button>
+        <button type="button" id="pay-bill" class="btn btn-primary">Pay
+          Bill</button>
+      </div>
+
       <div class="card bg-danger">
         <img class="card-img-top" src="holder.js/100x180/" alt="">
         <div class="card-body">
@@ -66,7 +77,7 @@
             <th>Updated Balance</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="transactions_table">
           <tr>
             <td scope="row"><span class="date"></span></td>
             <td>Debit</td>
@@ -101,17 +112,60 @@
         </p>
         <br>
         <div class="text-center">
-          <a href=""><img class="img1" /></a>
-          <a href=""><img class="img2" /></a>
-          <a href=""><img class="img3" /></a>
+          <a href="https://www.facebook.com/" target="_blank"><img
+              class="img1 fb" /></a>
+          <a href="https://www.instagram.com/" target="_blank"><img
+              class="img2 insta" /></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"><img
+              class="img3 tweet" /></a>
         </div>
         <hr>
       </div>
     </footer>
+    <!-- transfer model -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="transfer" tabindex="-1" role="dialog"
+      aria-labelledby="modelTitleId" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Transfer money</h5>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="">Who are you Transferring to </label>
+              <input type="text" name="transfer_name" id="transfer_to"
+                class="form-control" placeholder="John Smith" aria-describedby="helpId">
+              <label for="">Enter the amount ($) </label>
+              <input type="number" name="transfer_amount" id="transferring_amount" step=".01"
+                class="form-control" placeholder="100.10" aria-describedby="helpId">
+            </div>
+          </div>
+          <div class="modal-footer">
+            
+            <button type="button" id = "transfer_btn" class="btn btn-primary">Complete Transfer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/members.js"></script>
 
   </body>

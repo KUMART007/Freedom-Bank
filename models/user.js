@@ -32,6 +32,12 @@ var bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define("User", {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -60,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        isEmail:true
+        isEmail: true
       }
       // validate: {
       //   isUnique: (value, next) => {
@@ -84,10 +90,13 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+
+  }, {
+    underscore: true
   });
 
-  User.prototype.validPassword=function(password) {
+  User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
   };
 
@@ -101,8 +110,9 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.hasOne(models.Account, {
-      as: "userAccount",
-      foreignKey: "userId"
+      as: "useraccount",
+      targetKey: "id",
+      foreignKey: "user_id"
     })
   }
   // Account.belongsTo(User);

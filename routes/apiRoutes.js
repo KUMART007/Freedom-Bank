@@ -35,23 +35,33 @@ module.exports = app => {
         id: req.user.id
         // id:req.params.id
       },
-      attributes:{exclude:["password"]}
+      attributes: {
+        exclude: ["password"]
+      },
+      include: [{
+        model: db.account,
+        as: "useraccount",
+        include: [{
+          model: db.transactions,
+          // as: "usertrans"
+        }]
+      }]
     }).then((result) => {
       console.log(`Result for member is ${result}`);
       res.json(result);
     });
   });
-    app.get("/api/account", (req, res) => {
-      db.Account.findAll({
-        where: {
-          id: req.user.id
-          // id:req.params.id
-        },
-      }).then((result) => {
-        console.log(`Result for member is ${result}`);
-        res.json(result);
-      });
-    });
+  // app.get("/api/account", (req, res) => {
+  //   db.Account.findAll({
+  //     where: {
+  //       id: req.user.user_id
+  //       // id:req.params.id
+  //     },
+  //   }).then((result) => {
+  //     console.log(`Result for member is ${result}`);
+  //     res.json(result);
+  //   });
+  // });
 
   // app.get("/api/user_data/:username", (req, res) => {
   //   db.User.findOne({
@@ -70,9 +80,23 @@ module.exports = app => {
         email: req.params.email
       }
     }).then((result) => {
-      console.log(`Returning ${result}`);
+      console.log(`Returning ${ result }`);
       res.json(result);
     })
+  });
+
+  app.get(`/api/emailcheck`, (req, res) => {
+    db.User.findAll({
+      where: {
+        email: req.body.email
+      }
+    }).then((result) => {
+      console.log(`Returning ${ result }`);
+      res.json(result);
+    }).catch(err => {
+      console.log(err);
+      res.json(err);
+    });
   })
 
   app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
@@ -84,23 +108,26 @@ module.exports = app => {
 
   app.post(`/api/signup`, (req, res) => {
     console.log(req.body);
-
+    var randomId = Math.floor(100000000 + Math.random() * 900000000)
     db.User.create({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        // userId: randomId
       })
       .then(user => {
+        console.log(`User info here is ${JSON.stringify(user, null,2)}`);
         req.login(user, function (err) {
           if (err) res.status(400).json(err);
           res.json({
             location: "/members"
           });
+          console.log(`user id here is ------- ${user.id}`)
           db.Account.create({
-            userid: req.user.id,
+            user_id: user.id,
             current_balance: initBal
           }).then((acc) => {
-            
+
           })
         });
       })
@@ -120,6 +147,26 @@ module.exports = app => {
   //     });
   //   }
   // });
+
+  app.post(`/api/transfer/:id`, (req, res) => {
+    db.transactions.create({
+      account_id: req.params.id,
+      transaction_type: req.body.transaction_type,
+      comment: req.body.comment,
+      amount: req.body.amount,
+      updated_balance: req.body.updated_balance
+    }).then((result) => {
+      res.json(result);
+      db.Account.update({
+        current_balance: result.updated_balance
+      }, {
+          where: {
+          user_id: req.params.id
+        }
+      })
+    })
+  })
+
   app.get(`/logout`, (req, res) => {
     req.logout();
     res.redirect(`/`);
