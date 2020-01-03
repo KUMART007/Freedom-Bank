@@ -25,7 +25,23 @@ module.exports = app => {
     })
     //sends money to another account
     app.post('/api/sendmoney',function(req,res){
-
+      console.log(req.body)
+      db.transactions.create({
+        account_id: req.params.id,
+        transaction_type: req.body.transaction_type,
+        comment: req.body.comment,
+        amount: req.body.amount,
+        updated_balance: req.body.updated_balance
+      }).then((result) => {
+        res.json(result);
+        db.Account.update({
+          current_balance: result.updated_balance
+        }, {
+            where: {
+            user_id: req.params.id
+          }
+        })
+      })
     })
     //logs you out
     app.get(`/logout`, (req, res) => {
