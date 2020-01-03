@@ -1,0 +1,37 @@
+    {{#if user}}
+        <h1>Send Money</h1>
+        <div class='balance'>
+            <h1>Account Number: {{user.account_number}}</h1>
+            <p>Balance: {{user.current_balance}}</p>
+        </div>
+        <div class='send-money-form'>
+            <form action='/api/sendmoney' method='POST'>
+                <div>
+                    <label>Receiving Email Address</label>
+                    <input id='send-email-input' name='receiving_email'>
+                </div>
+                <div>
+                    <label>Amount</label>
+                    <input id='send-money-input' name='amount'>
+                </div>
+                <button id='send-money-button' type='button'>Send Money</button>
+
+                <div class='send-money-modal'>
+                    <div class='modal-content'>
+                        <span class="close">&times;</span>
+                            <div class='modal-send-money-box'>
+                                <h1>Send Money Request</h1>
+                                <div>
+                                    <p id='sendmoneyamount'></p>
+                                    <p id='sendemail'></p>
+                                    <button id='cancel-money' type='button'>Cancel</button>
+                                    <button type='submit'>Confirm</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    {{else}}
+        {{> setupAccount}}
+    {{/if}}

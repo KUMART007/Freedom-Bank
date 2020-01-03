@@ -1,0 +1,12 @@
+        {{#if user}}
+            <h1 class='fname'>Hello, {{user.first_name}} {{user.last_name}}</h1>
+            <div class='balance'>
+                <h1>Account Number: {{user.account_number}}</h1>
+                <p>Balance: {{user.current_balance}}</p>
+            </div>
+            <div class='transactions-box'>
+                <h1>box full of transactions</h1>
+            </div>
+        {{else}}
+            {{> setupAccount}}
+        {{/if}}

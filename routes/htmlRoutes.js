@@ -1,52 +1,45 @@
-var db = require("../models");
+const db = require("../models")
+const passport = require('passport')
 
-module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    res.render("layouts/main");
-  });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
-};
+  module.exports = app => {
+    //home page
+    app.get("/", function(req, res) {
+      // if(req.Authenticate()){
+      //   res.redirect('/dashboard')
+      // } else {
+        res.render('login')
+      // }
 
-// app.get("/example/:id", function(req, res) {
-//   db.Example.findOne({ where: { id: req.params.id } }).then(function(
-//     dbExample
-//   ) {
-//     res.render("example", {
-//       example: dbExample
-//     });
-//   });
-// });
+    });
+    //account dashbord when logged in
+    app.get('/dashboard', function(req,res){
+      if(req.user){
+        db.Account.findOne({
+          where: {
+            userId: req.user
+          }
+        }).then(function(data){
+          console.log(data)
+          res.render('dashboard', {user: data})
+        })
+      } else {
+        res.redirect('/')
+      }
+    })
 
-// Requiring path to so we can use relative routes to our HTML files
-// var path = require("path");
-// //
-// // Requiring our custom middleware for checking if a user is logged in
-// var isAuthenticated = require("../config/middleware/isAuthenticated");
-// //
-// module.exports = function (app) {
-//   //
-//   app.get("/", function (req, res) {
-//     // If the user already has an account send them to the members page
-//     if (req.user) {
-//       res.redirect("/members");
-//     }
-//     res.sendFile(path.join(__dirname, "../public/login.html"));
-//   });
-//   //
-//   app.get("/login", function (req, res) {
-//     // If the user already has an account send them to the members page
-//     if (req.user) {
-//       res.redirect("/members");
-//     }
-//     res.sendFile(path.join(__dirname, "../public/login.html"));
-//   });
+    //redirects when going to unknown route
+    app.get("*", function(req, res) {
+      res.redirect("/");
+    }); 
+  }
 
-//   app.get("/members", isAuthenticated, function (req, res) {
-//     res.sendFile(path.join(__dirname, "../public/members.html"));
-//   });
-// };
+function isLoggedIn(req, res, next) {
+ 
+  if (req.isAuthenticated())
+   
+      return next();
+       
+  res.redirect('/404');
+
+}

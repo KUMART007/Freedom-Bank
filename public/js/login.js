@@ -1,39 +1,82 @@
-$(document).ready(function() {
-  // Getting references to our form and inputs
-  var loginForm = $("form.login");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
 
-  // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function(event) {
-    event.preventDefault();
-    console.log(`The password is: ${passwordInput.val().trim()}`);
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
+  //pressing the login/signup will toggle the modal for user
+  $('#login').on('click',function(){
+    event.preventDefault()
+    $('.login-modal').css('display','block')
+  })
+  $('#signup').on('click',function(){
+    event.preventDefault()
+    $('.signup-modal').css('display','block')
+  })
+  //pressing on the document or the X will allow the user to close the modal
+  $('span').on('click',function(){
+    event.preventDefault()
+    $('.signup-modal').css('display','none')
+    $('.login-modal').css('display','none')
+    $('.send-money-modal').css('display','none')
+  })
+//buttons on the modal
+  // $( ".login-button" ).unbind( "click" );
+  // $('.login-button').on('click',function(){
+  //   event.preventDefault()
+    
+  //   let email = $('#username').val().trim()
+  //   let password = $('#pw').val().trim()
+  //   console.log(`Loging in as\nLogin:${email}\nPassword:${password}`)
+  //   // loginUser(email,password)
+  // })
 
-    if (!userData.email || !userData.password) {
-      return;
+  // $('.signup-button').on('click',function(){
+  //   event.preventDefault()
+  //   $('.pw-error').empty()
+
+  //   let newUsername = $('#username').val().trim()
+  //   let newPassword = $('#pw').val().trim()
+  //   // checkSignUp(newUsername,newPassword)
+  // })
+
+//function to make sure the user creates a password within the requirements
+  function checkSignUp(username,pw){
+    let checkUpperCase = false;
+    let checkLowerCase = false;
+    let checkLength = false;
+
+
+    for(let i = 0; i < pw.length; i++){
+      if(pw.charAt(i) === pw.charAt(i).toUpperCase()){
+        checkUpperCase = true
+      }
+      if(pw.charAt(i) === pw.charAt(i).toLowerCase()){
+        checkLowerCase = true
+      }
     }
 
-    // If we have an email and password we run the loginUser function and clear the form
-    loginUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
-  });
+    if(pw.length >= 8){
+      checkLength = true
+    }
 
-  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-  function loginUser(email, password) {
-    $.post("/api/login", {
-      email: email,
-      password: password
-    }).then(function(data) {
-      window.location.replace(data.location);
-      // If there's an error, log the error
-    }).catch(function(err) {
-      console.log(`The error is ${err}`);
-    });
+    if(checkUpperCase === false){
+      $('.pw-error').append(`<p>You must include a uppercase letter!</p>`)
+    }
+    if(checkLowerCase === false){
+      $('.pw-error').append(`<p>You must include a lowercase letter!</p>`)
+    }
+    if(checkLength === false){
+      $('.pw-error').append(`<p>Your password must be 8 or more characters!</p>`)
+    }
+    if(checkUpperCase === true && checkLowerCase === true && checkLength === true){
+      console.log('password requirements passed')
+      console.log(`creating new user \nUsername: ${username}\nPassword: ${pw}`)
+    }
   }
-
-});
+  //   function loginUser(userName, password) {
+  //   $.post("/login", {
+  //     username: userName,
+  //     password: password
+  //   }).then(function(data) {
+  //     // If there's an error, log the error
+  //   }).catch(function(err) {
+  //     alert('something failed')
+  //     console.log(`The error is ${err}`);
+  //   });
+  // }

@@ -17,8 +17,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.hasOne(models.Account);
-  User.hasOne(Account, {
+    U, ser.hasOne(models.Account);
+  User.hasOne(Account{
     as: "userAccount",
     foreignKey: "userId"
   });
@@ -32,6 +32,11 @@ var bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define("User", {
+    id: { 
+      autoIncrement: true, 
+      primaryKey: true, 
+      type: DataTypes.INTEGER
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -55,13 +60,13 @@ module.exports = (sequelize, DataTypes) => {
       //   }
       // }
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail:true
-      }
+    // email: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   unique: true,
+    //   validate: {
+    //     isEmail:true
+    //   }
       // validate: {
       //   isUnique: (value, next) => {
       //     var self = this;
@@ -80,16 +85,12 @@ module.exports = (sequelize, DataTypes) => {
       //       });
       //   }
       // }
-    },
+    // },
     password: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
-
-  User.prototype.validPassword=function(password) {
-    return bcrypt.compareSync(password, this.password);
-  };
 
   User.beforeCreate((user) => {
     user.password = bcrypt.hashSync(
@@ -99,12 +100,16 @@ module.exports = (sequelize, DataTypes) => {
     );
   });
 
+  User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(this.password, password);
+  };
+
   User.associate = (models) => {
     User.hasOne(models.Account, {
       as: "userAccount",
       foreignKey: "userId"
     })
   }
-  // Account.belongsTo(User);
+
   return User;
 }

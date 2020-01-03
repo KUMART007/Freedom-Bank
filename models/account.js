@@ -6,7 +6,28 @@ module.exports = (sequelize, DataTypes) => {
     current_balance: {
       type: DataTypes.DECIMAL(10, 2),
       defauleValue: 0.00,
-    }
+    },
+    account_number: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+    },
+    first_name: {
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
+    last_name: {
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
+
   })
   Account.associate = (models) => {
     Account.belongsTo(models.User, {

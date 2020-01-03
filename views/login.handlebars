@@ -1,0 +1,84 @@
+
+
+  <div class='jumbo-container'>
+    {{!-- <nav class='nav-bar'>
+      <p class='dropdown'><a href='#'>Personal</a></p>
+      <p class='dropdown'><a href='#'>Business</a></p>
+      <p class='dropdown'><a href='#'>Investment</a></p>
+      <p class='dropdown'><a href='#'>Careers</a></p>
+    </nav> --}}
+
+    <div class='login-modal'>
+        <div class='modal-content'>
+            <span class="close">&times;</span>
+                <div class='modal-login-box'>
+                  <form action='/api/login' method="POST">
+                    <label>UserName:</label>
+                    <input type="username" id='username' name='username'><br>
+                    <label>Password:</label>
+                    <input type="password" id="pw" name='password'>
+                    <div class='pw-error'></div>
+                    <div>
+                      <button class='account-button login-button' type='submit'>Login</button>
+                    </div>
+                </form>
+              </div>
+        </div>
+    </div>
+
+    <div class='signup-modal'>
+      <div class='modal-content'>
+          <span class="close">&times;</span>
+              <div class='modal-signup-box'>
+                <form action='/api/signup' method="POST">
+                  <label>UserName:</label>
+                  <input type="username" id='username' name='username'><br>
+                  <label>Password:</label>
+                  <input type="password" id="pw" name='password'>
+                  <div class='pw-error'></div>
+                  <div>
+                    <button class='account-button signup-button' type='submit'>Sign up!</button>
+                  </div>
+              </form>
+            </div>
+      </div>
+    </div>
+
+  <div class='jumbo-login-row'>
+      <div class="login-box">
+        <h1>Log into your Account</h1>
+        <div class="button-box">
+          <button id='login'>login</button>
+          <button id='signup'>signup</button>
+        </div>
+        <div class='login-box-info'>
+          <p><a href='#'>Forgot password?</a></p>
+        </div>
+      </div>
+  </div>
+</div>  
+
+  <div class="container2">
+    <div id="list-of-options">
+      <ul class="ul-boxs">
+        <li class="box1 display-li"><p class="list"><a class="white-text" href="Find a credit card">Find a credit card</a></p>
+        </li>
+        <li class="box2 display-li"><p class="list2"><a class="list2" href="Manage your money">Manage your money</a></p>
+        </li>
+        <li class="box2 display-li"><p class="list2"><a class="list2" href="Buy a home">Buy a home</a></p>
+        </li>
+        <li class="box2 display-li"><p class="list2"><a class="list2" href="Buy a car">Buy a car</a></p>
+        </li>
+        <li class="box2 display-li"><p class="list2"><a class="list2" href="Use your equity">Use your equity</a></p>
+        </li>
+      </ul>
+    </div>
+    <div class="card-info">
+      <p>A card that matches you</p>
+      </div>
+    </div>
+
+
+  {{> footer }}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/login.js"></script>

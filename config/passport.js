@@ -1,47 +1,69 @@
-let passport = require("passport");
-let LocalStrategy = require("passport-local").Strategy;
+const db = require("../models");
 
-let db = require("../models");
+module.exports = function(passport)  {
+  const LocalStrategy = require("passport-local").Strategy;
 
-passport.use(
-  new LocalStrategy(
+  passport.use('local-login',new LocalStrategy(
     {
-      usernameField: "email"
+      username: "username"
     },
-    (email, password, done) => {
+    (username, password, done) => {
       db.User.findOne({
         where: {
-          email: email
+          username:username
         }
       }).then(dbUser => {
         if (!dbUser) {
-          console.log("no user");
-          return done(null, false, {
-            message: "Email is not valid!"
-          });
-        } else if (!dbUser.validPassword(password)) {
-          console.log("wrong password");
-          return (
-            done,
-            false,
-            {
-              message: "Incorrect Password!"
-            }
-          );
+          console.log('username failed')
+          return done(null, false, { message: 'Incorrect username.' });
+        } else if (dbUser.validPassword(password)) {
+          console.log('pw failed')
+          return done(null, false, { message: 'Incorrect password.' });
         }
-
-        return done(false, dbUser);
+        console.log('sucessful passport')
+        return done(null, dbUser);
       });
     }
   )
-);
+)
 
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
-});
-//
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
-});
+  passport.use('local-signup',new LocalStrategy(
+    
+    {
+      usernameField: 'username'
+    },(username,password,done) => {
+      db.User.findOne({
+        where: {
+          username: username
+        }
+        }).then(dbUser =>{
+          console.log('checcking username')
+          if(dbUser){
+            done(null,false, {message: "Email already taken."})
+          } else {
+            let newUser = {
+              username: username,
+              password: password
+            }
+            db.User.create(newUser).then(function(newUser){
+              console.log('user created')
+              if(!newUser){
+                return done(null,false)
+              }
+              if(newUser){
+                return done(null,newUser)
+              }
+            })
+          }
+        })
+      }
+    ))
 
-module.exports = passport;
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  }) 
+
+  passport.deserializeUser(function(user, done) { 
+    done(null, user); 
+  });
+}

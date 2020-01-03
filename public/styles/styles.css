@@ -1,3 +1,6 @@
+body{
+  font-size:25px;
+}
 .nav-bar{
   display:flex;
   background-color:black;
@@ -31,12 +34,15 @@
 }
 
 .jumbo-container{
+  background-color:#1C5681;
+  background-image: url('https://www.pnb.com/assets/img/body-background.jpg');
+  background-size: 100% 100%;
+  border:2px solid black;
   display:flex;
   flex-direction: column;
   justify-content: space-between; 
   width: 100%;
   height: 700px;
-  background-color:grey
 }
 
 .jumbo-login-row{
@@ -44,22 +50,27 @@
   margin-right:auto;
   width:960px;
   display:flex;
+  height:100%;
+
+ 
 }
 .login-box{
+  color:white;
+  margin-top:auto;
   width:250px;
   height:180px;
-  background-color:green;
+  background-color:#08088b;
   align-items: center;
   justify-content: space-around;
   margin-left:auto;
   display:flex;
-  margin-bottom:350px;
+  margin-bottom:200px;
   flex-direction: column;
 }
 
 
 /* -------------------MODAL ------------------ */
-.modal{
+.login-modal, .signup-modal{
   display: none; 
   position: fixed; 
   z-index: 1; 
@@ -78,7 +89,7 @@
   border: 1px solid #888;
   width: 50%; 
 }
-.modal-login-box{
+.modal-login-box, .modal-signup-box{
   text-align: center;
 }
 .close{
@@ -91,4 +102,244 @@
   font-size:25px;
   height:50px;
   width:250px;
+}
+/*----Credit card container----*/
+.container2 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  width: 100%;
+  height: 700px;
+  background-color:rgb(248, 247, 252)
+}
+
+#list-of-options {
+  display: flex;
+  align-items: center;
+}
+
+.ul-boxs {
+  margin: 50px 20px 10px 20px;
+}
+
+.box1 {
+  background-color: rgb(8, 8, 139);
+  height: 100px;
+  width: 200px;
+}
+
+.box2 {
+  background-color: rgb(228, 228, 235);
+  height: 100px;
+  width: 200px;
+}
+
+.display-li {
+  display: inline-block;
+}
+
+.list {
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 40px;
+  text-align: center;
+  color: white;
+}
+
+.list2 {
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 40px;
+  text-align: center;
+  color: rgb(97, 95, 95);
+}
+
+.box2:hover {
+  background-color: rgb(8, 8, 139);
+  color: white;
+}
+
+.list2:hover {
+  color: white;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.card-info {
+  color: rgb(8, 8, 139);
+}
+/*----------Footer styling ------------*/
+
+.footer {
+  display: flex;
+  height: 200px;
+  background-color: #fc1a1a;
+  color: rgb(117, 115, 115);
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+#logo {
+  margin: auto;
+}
+
+.img1 {
+  margin: 10px;
+  display: inline-block;
+  background-image: url("../images/facebook.png");
+  height: 50px;
+  width: 50px;
+}
+
+.img2 {
+  margin: 10px;
+  display: inline-block;
+  background-image: url("../images/insta.jpg");
+  height: 50px;
+  width: 50px;
+}
+
+.img3 {
+  margin: 10px;
+  display: inline-block;
+  background-image: url("../images/twitter.jpg");
+  height: 50px;
+  width: 50px;
+}
+
+.white-text {
+  margin: 10px;
+  color: white;
+}
+
+hr {
+  margin: 10px;
+}
+
+  width: 50%; 
+
+}
+.modal-login-box {
+  text-align: center;
+}
+.close {
+  font-size: 50px;
+}
+.close:hover {
+  cursor: pointer;
+}
+#pw,
+#username {
+  font-size: 25px;
+  height: 50px;
+  width: 250px;
+}
+
+#pw,#username{
+  font-size:25px;
+  height:50px;
+  width:250px;
+}
+
+/* -------- Dashboard ------ */
+.dashboard-container{
+  background-color:gray;
+  display:flex;
+  width:100%;
+  padding: 20px 10px 20px 10px;
+  margin-left:auto;
+  margin-right:auto;
+  justify-content:center;
+}
+.dash-nav-container{
+  background-color:#08088b;
+  width:100%;
+  height:100px;
+  display:flex;
+  align-items: center;
+}
+.dashboard-nav{
+  font-size:25px;
+  color:white;
+  display:flex;
+  width:960px;
+  justify-content:flex-end;
+  align-items: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.dashboard-nav div{
+  border-right: 1px solid white;
+  padding-right:15px;
+  margin-right:15px;
+}
+.dash-username{
+}
+.dash-signout a{
+  text-decoration: none;
+  color:white;
+  cursor: pointer;
+}
+.dash-signout a:hover{
+  border-bottom:1px solid white;
+}
+.account-container{
+  background-color:white;  
+  height:500px;
+  display:flex;
+  flex-direction: column;
+  width:800px;
+}
+.fname{
+  text-align: center;
+}
+.balance{
+  padding:15px 0px 15px 0px;
+  display:flex;
+  justify-content: space-evenly;
+}
+/*--------------SIDE DASHBOARD PANEL ----------*/
+.send-money,.loans,.update-account{
+  display:none;
+}
+.side-nav-bar{
+  padding:10px 10px 10px 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color:#08088b;
+  color:white;
+}
+.side-nav-bar a{
+  cursor: pointer;
+  padding:10px 0px 10px 0px;
+  text-decoration: none;
+  color:white;
+}
+/*------MODAL SEND MONEY ---- */
+.send-money-modal{
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+.modal-content{
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; 
+}
+.modal-send-money-box{
+  text-align: center;
 }
