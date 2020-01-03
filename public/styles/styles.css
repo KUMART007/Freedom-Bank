@@ -10,27 +10,30 @@ body{
   width:960px;
   margin-left:auto;
   margin-right:auto;
+
   justify-content: flex-start;
 }
-.dropdown a{
+.dropdown a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 .dropdown {
-  font-size:20px;
-  padding:20px 15px 20px 15px;
+  font-size: 20px;
+  padding: 20px 15px 20px 15px;
 }
 
-.dropdown:hover{
-  cursor:pointer;
-  background-color:orange;
+.dropdown:hover {
+  cursor: pointer;
+  background-color: orange;
 }
-#login,#signup{
-  height:50px;
-  display:flex;
+
+#login,
+#signup {
+  height: 50px;
+  display: flex;
 }
-.button-box{
-  display:flex;
+.button-box {
+  display: flex;
 }
 
 .jumbo-container{
@@ -40,7 +43,7 @@ body{
   border:2px solid black;
   display:flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   width: 100%;
   height: 700px;
 }
@@ -68,7 +71,6 @@ body{
   flex-direction: column;
 }
 
-
 /* -------------------MODAL ------------------ */
 .login-modal, .signup-modal{
   display: none; 
@@ -76,28 +78,159 @@ body{
   z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content{
+.modal-content {
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
+  width: 50%;
+ 
+}
+
+/*----Credit card container----*/
+.container2 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  width: 100%;
+  height: 700px;
+  background-color:rgb(248, 247, 252)
+}
+
+#list-of-options {
+  display: flex;
+  align-items: center;
+}
+
+.ul-boxs {
+  margin: 50px 20px 10px 20px;
+}
+
+.box1 {
+  background-color: rgb(8, 8, 139);
+  height: 100px;
+  width: 200px;
+}
+
+.box2 {
+  background-color: rgb(228, 228, 235);
+  height: 100px;
+  width: 200px;
+}
+
+.display-li {
+  display: inline-block;
+}
+
+.list {
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 40px;
+  text-align: center;
+  color: white;
+}
+
+.list2 {
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 40px;
+  text-align: center;
+  color: rgb(97, 95, 95);
+}
+
+.box2:hover {
+  background-color: rgb(8, 8, 139);
+  color: white;
+}
+
+.list2:hover {
+  color: white;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.card-info {
+  color: rgb(8, 8, 139);
+}
+
+
+/*Footer styling */
+
+.footer {
+  display: flex;
+  height: 200px;
+  background-color: #fc1a1a;
+  color: rgb(117, 115, 115);
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+#logo {
+  margin: auto;
+}
+
+.img1 {
+  margin: 10px;
+  display: inline-block;
+  background-image: url("../images/facebook.png");
+  height: 50px;
+  width: 50px;
+}
+
+.img2 {
+  margin: 10px;
+  display: inline-block;
+  background-image: url("../images/insta.jpg");
+  height: 50px;
+  width: 50px;
+}
+
+.img3 {
+  margin: 10px;
+  display: inline-block;
+  background-image: url("../images/twitter.jpg");
+  height: 50px;
+  width: 50px;
+}
+
+.white-text {
+  margin: 10px;
+  color: white;
+}
+
+hr {
+  margin: 10px;
+}
+
   width: 50%; 
+
 }
 .modal-login-box, .modal-signup-box{
   text-align: center;
 }
-.close{
-  font-size:50px;
+.close {
+  font-size: 50px;
 }
-.close:hover{
-  cursor:pointer;
+.close:hover {
+  cursor: pointer;
 }
+#pw,
+#username {
+  font-size: 25px;
+  height: 50px;
+  width: 250px;
+}
+
 #pw,#username{
   font-size:25px;
   height:50px;
@@ -327,3 +460,4 @@ hr {
 .modal-send-money-box{
   text-align: center;
 }
+
