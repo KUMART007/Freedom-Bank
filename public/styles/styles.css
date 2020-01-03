@@ -112,21 +112,12 @@ body{
   width: 100%;
   height: 700px;
   background-color:rgb(248, 247, 252)
-}
-
-#list-of-options {
-  display: flex;
-  align-items: center;
+  border: 2px solid red;
 }
 
 .ul-boxs {
   margin: 50px 20px 10px 20px;
-}
-
-.box1 {
-  background-color: rgb(8, 8, 139);
-  height: 100px;
-  width: 200px;
+  display:flex;
 }
 
 .box2 {
@@ -134,39 +125,32 @@ body{
   height: 100px;
   width: 200px;
 }
+.box1 {
+  background-color: rgb(8, 8, 139);
+  height: 100px;
+  width: 200px;
+}
 
 .display-li {
-  display: inline-block;
-}
-
-.list {
   font-size: 20px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  padding-top: 40px;
   text-align: center;
+  padding-top: 40px;
+  margin-right:20px;
+  margin-left:20px;
   color: white;
-}
-
-.list2 {
-  font-size: 20px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  padding-top: 40px;
-  text-align: center;
-  color: rgb(97, 95, 95);
 }
 
 .box2:hover {
+  cursor:pointer;
   background-color: rgb(8, 8, 139);
   color: white;
 }
-
-.list2:hover {
-  color: white;
+.box1:hover{
+  cursor:pointer;
 }
-
-
-a {
-  text-decoration: none;
+#manage-money-box,#buy-home-box,#buy-car-box,#buy-equity-box{
+  display:none;
 }
 
 .card-info {
